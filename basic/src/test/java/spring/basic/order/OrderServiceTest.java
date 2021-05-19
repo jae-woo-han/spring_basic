@@ -4,15 +4,17 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
+import spring.basic.discount.RateDiscountPolicy;
 import spring.basic.member.Grade;
 import spring.basic.member.Member;
 import spring.basic.member.MemberService;
 import spring.basic.member.MemberServiceImpl;
+import spring.basic.member.MemoryMemberRepository;
 
 class OrderServiceTest {
 
-	MemberService memberService = new MemberServiceImpl();
-	OrderService orderService = new OrderServiceImpl();
+	MemberService memberService = new MemberServiceImpl(new MemoryMemberRepository());
+	OrderService orderService = new OrderServiceImpl(new MemoryMemberRepository(), new RateDiscountPolicy());
 	
 	
 	@Test
